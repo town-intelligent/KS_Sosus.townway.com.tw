@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/chart.js@4.3.0/dist/chart.umd.js"></script>
+    <script src="https://unpkg.com/chart.js-plugin-labels-dv@4.0.0/dist/chartjs-plugin-labels.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+    <script src="https://s3.amazonaws.com/builds.handlebarsjs.com/handlebars.min-v4.7.8.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/loading.css" />
+    <link rel="stylesheet" href="/static/css/progress_bar.css" />
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/innerHTML.js"></script>
+    <script src="/static/js/localStorage.js"></script>
+    <script src="/static/js/file_handler.js"></script>
+    <script src="/static/js/accounts.js"></script>
+    <script src="/static/js/auth.js"></script>
+    <script src="/static/js/permission.js"></script>
+    <!-- <script src="/static/js/core/upload_adapter.js"></script> -->
+    <!-- <script src="/static/js/core/editor.js"></script> -->
+    <script type="module" src="/static/js/cms_agent.js"></script>
+    <script type="module" src="/static/js/plan.js"></script>
+    <script type="module" src="/static/js/tasks.js"></script>
+    <script type="module" src="/static/js/cms_sroi.js"></script>
+    <script type="module" src="/static/js/cms_plan_info.js"></script>
+    <!-- <script type="module">
+      import { uploadProjectCover } from "/static/js/cms_plan_info.js";
+      window.uploadProjectCover = uploadProjectCover;
+    </script> -->
+    <script type="module" src="/static/js/set_page_info.js"></script>
+    <script src="/static/js/qrcode.js"></script>
+    <script type="module" src="/static/js/init.js"></script>
+    <script id="tpl-partial-sroi-table" type="text/x-handlebars-template">
+      {{#item}}
+        <div class="mt-4">
+          {{#each head as |h|}}
+            <p class="text-center font-weight-bold">{{h}}</p>
+          {{/each}}
+            <!-- <h3>{{head}}</h3> -->
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                {{#each key as |k|}}
+                  <th scope="col">{{k}}</th>
+                {{/each}}
+              </tr>
+            </thead>
+            <tbody>
+              {{#each value as |values|}}
+                <tr>
+                  {{#each values as |v|}}
+                    <td>{{v}}</td>
+                  {{/each}}
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      {{/item}}
+    </script>
+    <script id="tpl-cms-sroi" type="text/x-handlebars-template">
+      <div>
+        <div class="mt-4">
+          <p class="bg-2ndhome p-2">計畫基本資料</p>
+          <div class="row px-4">
+            <div class="col-md-6">
+              <p>永續專案: {{name}}</p>
+              <p>專案金額 (NTD): {{budget}}</p>
+            </div>
+
+            <div class="col-md-6">
+              <p>期間: {{period}}</p>
+              <p>
+                是否揭露:
+                <input
+                  name="visible"
+                  class="visible mx-2"
+                  type="checkbox"
+                  value="true"
+                />
+                是
+                <input
+                  name="visible"
+                  class="visible mx-2"
+                  type="checkbox"
+                  value="false"
+                />
+                否
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <p class="bg-2ndhome p-2">社會投資報酬率 (SROI) 方法學</p>
+          <div class="px-4">
+            <div class="d-flex">
+              <p class="flex-grow-1">
+                透過
+                <a
+                  href="https://docs.google.com/spreadsheets/d/1IH4P2BwMVsuMLcutZyv7vXaOaRTmVNr0B8heWbf-VBk/edit"
+                >SROI 方法學計算式</a>，更能讓團隊在社會責任活動中更精確地衡量社會、環境及經濟所創造的價值。
+              </p>
+              <button id="refresh" class="btn btn-primary">更新</button>
+            </div>
+          </div>
+        </div>
+
+        {{#with sroiData}}
+
+          <div class="mt-4">
+            <p class="bg-2ndhome p-2">
+              <a
+                class="text-decoration-none text-dark"
+                data-toggle="collapse"
+                href="#social"
+                role="button"
+                aria-expanded="false"
+                aria-controls="social"
+              >
+                <i class="fa fa-plus"></i>
+                社會面向
+              </a>
+            </p>
+
+            <div class="px-4 pb-4 collapse" id="social">
+              {{> sroiTable item=sroi_social}}
+            </div>
+
+
+            <div class="px-4">
+              <p>社會面向價值計算小計 : {{social_subtotal}}</p>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <p class="bg-2ndhome p-2">
+              <a
+                class="text-decoration-none text-dark"
+                data-toggle="collapse"
+                href="#economic"
+                role="button"
+                aria-expanded="false"
+                aria-controls="economic"
+              >
+                <i class="fa fa-plus"></i>經濟面向
+              </a>
+            </p>
+
+            <div class="px-4 pb-4 collapse" id="economic">
+              {{> sroiTable item=sroi_economy}}
+            </div>
+
+            <div class="px-4">
+              <p>經濟面向價值計算小計 : {{economy_subtotal}}</p>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <p class="bg-2ndhome p-2">
+              <a
+                class="text-decoration-none text-dark"
+                data-toggle="collapse"
+                href="#environment"
+                role="button"
+                aria-expanded="false"
+                aria-controls="environment"
+              >
+                <i class="fa fa-plus"></i>
+                環境面向</a>
+            </p>
+
+            <div class="px-4 pb-4 collapse" id="environment">
+              {{> sroiTable item=sroi_environment}}
+            </div>
+
+            <div class="px-4">
+              <p>環境面向價值計算小計 : {{environment_subtotal}}</p>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <p class="bg-2ndhome p-2">價值計算</p>
+
+            <div class="px-4">
+              <div class="row">
+                <div class="col-md-8">
+                  <p>總社會現值 : {{total_benefit}}</p>
+                  <p>總投入價值 : {{total_cost}}</p>
+                  <p>SROI : {{sroi}}</p>
+                  <ul class="list-unstyled">
+                    <li>
+                      1. 免責聲明：以上提供的 SROI
+                      計算公式僅供參考，使用者應理解其限制性質並自行承擔風險。
+                    </li>
+                    <li>
+                      2. SROI
+                      計算可能涉及不確定性和偏誤，請使用者謹慎進行並諮詢專業人士。
+                    </li>
+                    <li>
+                      3. SROI
+                      計算為評估社會影響的方法之一，並不代表對所有決策的唯一評估標準。
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <div class="position-relative p-4">
+                    <canvas id="sroi_chart"></canvas>
+                    <div
+                      class="position-absolute text-center"
+                      style="top: 50%; left: 50%; transform: translate(-50%, -50%)"
+                    >
+                      <h5>SROI</h5>
+                      <h6>{{sroi}}</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {{/with}}
+      </div>
+    </script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div id="navbar"></div>
+
+    <!-- content -->
+    <section>
+      <div id="cms-sroi" class="container pt-4"></div>
+    </section>
+    <!-- footer -->
+    <div id="footer"></div>
+  </body>
+</html>

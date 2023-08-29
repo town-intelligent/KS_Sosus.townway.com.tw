@@ -7,7 +7,10 @@ import {
   draw_bar_chart,
   getMappedSdgData,
   sdgImages,
+  draw_doughnut_chart,
+  isValidDoughnutChartData,
 } from "./chart/bar.js";
+import { getSroiData } from "./api/sroi.js";
 import { renderHandlebars } from "./utils/handlebars.js";
 import { parse_sdgs_items } from "./utils/transformers.js";
 import { isOverflow } from "./utils/widgets.js";
@@ -242,7 +245,7 @@ function add_project_sdgs(obj_project) {
   }
 }
 
-export function set_page_info_content() {
+export async function set_page_info_content() {
   // Get path
   var path = window.location.pathname;
 
@@ -442,7 +445,52 @@ export function set_page_info_content() {
     obj_tasks_container.append(obj_div_root);
 
     // Draw task weight
-
     draw_project_chart(obj_task.uuid, chartId);
+
+    // Tabs
+    $(".tabs a").on("click", (e) => {
+      e.preventDefault();
+
+      $(".tabs a").addClass("text-secondary");
+      $(e.target).removeClass("text-secondary").addClass("text-dark");
+
+      $(".tabs .tabs-section").hide();
+      console.log($(e.target).attr("href"));
+      console.log($($(e.target).attr("href")));
+      $($(e.target).attr("href")).show();
+    });
+
+    $(".tabs a").get(1).click();
+
+    // SROI
+    const sroiData = await getSroiData(uuid);
+
+    const html = document.getElementById("tpl-sroi-section").innerHTML;
+    const template = Handlebars.compile(html);
+    document.getElementById("sroi-section").innerHTML = template(sroiData);
+
+    const { social_subtotal, economy_subtotal, environment_subtotal } =
+      sroiData;
+    const labels = ["社會價值", "經濟價值", "環境價值"];
+    const datasetData = [
+      social_subtotal,
+      economy_subtotal,
+      environment_subtotal,
+    ];
+
+    // 當社會價值、經濟價值、環境價值都為0時，不顯示圓餅圖
+    if (isValidDoughnutChartData(datasetData)) {
+      draw_doughnut_chart({
+        element: document.querySelector("#cms-sroi #sroi_chart"),
+        data: {
+          labels,
+          datasets: [
+            {
+              data: datasetData,
+            },
+          ],
+        },
+      });
+    }
   }
 }
