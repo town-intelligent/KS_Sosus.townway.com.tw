@@ -481,7 +481,7 @@ export async function set_page_info_content() {
     // 當社會價值、經濟價值、環境價值都為0時，不顯示圓餅圖
     if (isValidDoughnutChartData(datasetData)) {
       draw_doughnut_chart({
-        element: document.querySelector("#cms-sroi #sroi_chart"),
+        element: document.querySelector("#sroi-section #sroi_chart"),
         data: {
           labels,
           datasets: [
