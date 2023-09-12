@@ -455,8 +455,6 @@ export async function set_page_info_content() {
       $(e.target).removeClass("text-secondary").addClass("text-dark");
 
       $(".tabs .tabs-section").hide();
-      console.log($(e.target).attr("href"));
-      console.log($($(e.target).attr("href")));
       $($(e.target).attr("href")).show();
     });
 
