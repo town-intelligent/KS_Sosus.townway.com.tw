@@ -458,7 +458,7 @@ export async function set_page_info_content() {
       $($(e.target).attr("href")).show();
     });
 
-    $(".tabs a").get(1).click();
+    $('.tabs a').get(0).click();
 
     // SROI
     const sroiData = await getSroiData(uuid);
