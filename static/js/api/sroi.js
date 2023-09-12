@@ -4,7 +4,7 @@ export const getSroiData = async (uuid) => {
   form.append("uuid_project", uuid);
 
   const settings = {
-    url: "https://beta-tplanet-backend.townway.com.tw/projects/get_sroi",
+    url: `${HOST_URL_TPLANET_DAEMON}/projects/get_sroi`,
     method: "POST",
     timeout: 0,
     processData: false,
@@ -25,7 +25,7 @@ export const setSroiData = async (uuid, visible) => {
   form.append("visible", visible);
 
   const settings = {
-    url: "https://beta-tplanet-backend.townway.com.tw/projects/set_sroi",
+    url: `${HOST_URL_TPLANET_DAEMON}/projects/set_sroi`,
     method: "POST",
     timeout: 0,
     processData: false,
