@@ -451,8 +451,8 @@ export async function set_page_info_content() {
     $(".tabs a").on("click", (e) => {
       e.preventDefault();
 
-      $(".tabs a").addClass("text-secondary");
-      $(e.target).removeClass("text-secondary").addClass("text-dark");
+      $('.tabs a').addClass('text-muted').removeClass('text-dark');
+      $(e.target).removeClass('text-muted').addClass('text-dark');
 
       $(".tabs .tabs-section").hide();
       $($(e.target).attr("href")).show();
