@@ -77,6 +77,17 @@ export const set_page_info_cms_sroi = async (uuid) => {
       visible: sroiData.visible,
     };
 
+    const { social_subtotal, economy_subtotal, environment_subtotal } =
+      sroiData;
+
+    if (
+      social_subtotal == 0 &&
+      economy_subtotal == 0 &&
+      environment_subtotal == 0
+    ) {
+      return;
+    }
+
     renderSroiPage(data);
   });
 

@@ -462,13 +462,22 @@ export async function set_page_info_content() {
 
     // SROI
     const sroiData = await getSroiData(uuid);
+    const { social_subtotal, economy_subtotal, environment_subtotal } =
+      sroiData;
+
+    if (
+      social_subtotal == 0 &&
+      economy_subtotal == 0 &&
+      environment_subtotal == 0
+    ) {
+
+      sroiData.visible = false;
+    }
 
     const html = document.getElementById("tpl-sroi-section").innerHTML;
     const template = Handlebars.compile(html);
     document.getElementById("sroi-section").innerHTML = template(sroiData);
 
-    const { social_subtotal, economy_subtotal, environment_subtotal } =
-      sroiData;
     const labels = ["社會價值", "經濟價值", "環境價值"];
     const datasetData = [
       social_subtotal,
