@@ -1,3 +1,5 @@
+import { formatCurrency } from "../utils/format.js";
+
 export const getSroiData = async (uuid) => {
   const form = new FormData();
   form.append("email", "400@gmail.com");
@@ -13,9 +15,18 @@ export const getSroiData = async (uuid) => {
     data: form,
   };
 
-  const data = await $.ajax(settings).promise();
+  const content = await $.ajax(settings).promise();
+  let data = JSON.parse(content);
+  data = {
+    ...data,
+    computed: {
+      social_subtotal: formatCurrency(data.social_subtotal),
+      economy_subtotal: formatCurrency(data.economy_subtotal),
+      environment_subtotal: formatCurrency(data.environment_subtotal),
+    },
+  };
 
-  return JSON.parse(data);
+  return data;
 };
 
 export const setSroiData = async (uuid, visible) => {
