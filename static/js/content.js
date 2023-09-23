@@ -474,7 +474,6 @@ export async function set_page_info_content() {
       sroiData.visible = false;
     }
 
-    alert(JSON.stringify(sroiData.visible));
     const html = document.getElementById("tpl-sroi-section").innerHTML;
     const template = Handlebars.compile(html);
     document.getElementById("sroi-section").innerHTML = template(sroiData);
