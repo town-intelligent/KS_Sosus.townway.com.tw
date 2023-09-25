@@ -64,6 +64,7 @@ export const set_page_info_cms_sroi = async (uuid) => {
   data = {
     ...obj_project,
     visible: sroiData.visible,
+    spreadsheet_url: `https://docs.google.com/spreadsheets/d/${sroiData.file_id}`,
   };
 
   renderSroiPage(data);
