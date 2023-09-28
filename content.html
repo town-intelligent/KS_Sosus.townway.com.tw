@@ -91,13 +91,13 @@
           <div class="col-md-8 pb-4" style="line-height: 2.5em;">
             <ul>
               <li>基於社會投資報酬率 (SROI) 方法學，產出數值為 : {{sroi}}</li>
-              <li>總社會現值: {{total_benefit}}</li>
+              <li>總社會現值: {{computed.total_benefit}}</li>
               <ul>
                 <li>社會面向: {{computed.social_subtotal}}</li>
                 <li>經濟面向: {{computed.economy_subtotal}}</li>
                 <li>環境面向: {{computed.environment_subtotal}}</li>
               </ul>
-              <li>總投入現值: {{total_cost}}</li>
+              <li>總投入現值: {{computed.total_cost}}</li>
             </ul>
           </div>
         {{else}}
