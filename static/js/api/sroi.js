@@ -23,6 +23,8 @@ export const getSroiData = async (uuid) => {
       social_subtotal: formatCurrency(data.social_subtotal),
       economy_subtotal: formatCurrency(data.economy_subtotal),
       environment_subtotal: formatCurrency(data.environment_subtotal),
+      total_cost: formatCurrency(data.total_cost),
+      total_benefit: formatCurrency(data.total_benefit),
     },
   };
 
