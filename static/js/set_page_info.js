@@ -1,6 +1,7 @@
 import { set_page_info_cms_agent } from './cms_agent.js'
 import { set_page_info_cms_project_detail } from './cms_project_detail.js'
 import { set_page_info_cms_plan_info } from './cms_plan_info.js'
+import { set_page_info_cms_sroi } from './cms_sroi.js'
 import { set_page_info_cms_sdgs_setting } from './cms_sdgs_setting.js'
 import { set_page_info_cms_impact } from './cms_impact.js'
 import { set_page_info_cms_missions_display } from './cms_missions_display.js'
@@ -62,6 +63,10 @@ export function set_page_info() {
 
   if (page == "cms_plan_info.html") {
     set_page_info_cms_plan_info(uuid);
+  }
+
+  if (page == "cms_sroi.html") {
+    set_page_info_cms_sroi(uuid);
   }
 
   if (page == "cms_sdgs_setting.html") {
