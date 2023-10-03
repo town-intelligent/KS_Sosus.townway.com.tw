@@ -314,12 +314,46 @@ export const draw_bar_chart = ({
           font: { size: titleFontSize },
           position: titlePosition,
           padding: {
-            bottom: 50
-          }
+            bottom: 50,
+          },
         },
         labels: {
           render: "image",
           images: images,
+        },
+      },
+    },
+  });
+
+  return chart;
+};
+
+export const isValidDoughnutChartData = (data) => {
+  const sum = data.reduce((a, b) => a + b, 0);
+
+  return sum > 0;
+};
+
+export const draw_doughnut_chart = ({ element, data }) => {
+  const ctx = element;
+
+  const chart = new Chart(ctx, {
+    type: "doughnut",
+    data: data,
+    options: {
+      responsive: true,
+      animation: {
+        duration: 0,
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
+        labels: {
+          render: ({ label, percentage }) => {
+            return `${label}\n${percentage}%`;
+          },
+          precision: 2,
         },
       },
     },

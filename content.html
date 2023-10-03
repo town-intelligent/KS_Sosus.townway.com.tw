@@ -71,6 +71,44 @@
         </div>
       {{/each}}
     </script>
+
+
+    <script id="tpl-sroi-section" type="text/x-handlebars-template">
+      <div class="row">
+        {{#if visible}}
+          <div class="col-md-4 pb-4">
+            <div class="position-relative" style="max-width: 230px;">
+              <canvas id="sroi_chart" class="d-inline-block"></canvas>
+              <div
+                class="position-absolute text-center"
+                style="top: 50%; left: 50%; transform: translate(-50%, -50%);"
+              >
+                <h5>SROI</h5>
+                <h6>{{sroi}}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 pb-4" style="line-height: 2.5em;">
+            <ul>
+              <li>基於社會投資報酬率 (SROI) 方法學，產出數值為 : {{sroi}}</li>
+              <li>總社會現值: {{computed.total_benefit}}</li>
+              <ul>
+                <li>社會面向: {{computed.social_subtotal}}</li>
+                <li>經濟面向: {{computed.economy_subtotal}}</li>
+                <li>環境面向: {{computed.environment_subtotal}}</li>
+              </ul>
+              <li>總投入現值: {{computed.total_cost}}</li>
+            </ul>
+          </div>
+        {{else}}
+          <div>
+            <p class="text-center font-weight-bold">社會影響力數值已被積累，請持續關注。</p>
+            <img class="img-thumbnail" src="static/imgs/sroi-empty.png" />
+          </div>
+        {{/if}}
+      </div>
+    </script>
+    <script>console.log(JSON.stringify(visible));</script>
   </head>
   <body class="d-flex flex-column">
     <!-- navbar -->
@@ -181,102 +219,16 @@
                 </div>
               </div>
             </div>
-            <div class="row mt-4">
-              <div class="col-md-12 mb-3">
-                <p class="h5 fw-bold">成果展現</p>
-              </div>
-              <div id="tasks_container">
-                <!--                 <div id="beta_task_container">
-                  <div class="row mt-4">
-                    <div class="col-md-6">
-                      <div class="text-center">
-                        <img class="w-100" src="/static/imgs/product.png" alt="">
-                      </div>
-                    </div>
-                    <div class="col-md-6 mt-4 mt-md-0">
-                      <div class="text-center">
-                        <img class="w-100" src="/static/imgs/project-chart.png" alt="">
-                      </div>
-                      <div class="text-center">
-                        <p>標題</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row mt-4 mb-4">
-                    <div class="col-md-6">
-                      <p class="h5 fw-bold text-title">活動名稱：減塑產品設計</p>
-                      <small>日期：<span>xxxx.xx.xx</span></small>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="row mt-4 mt-md-0 justify-content-md-end pr-md-3">
-                        <div class="col-2 col-md-1 pr-0">
-                          <a href="#">
-                            <img class="w-100" src="/static/imgs/SDGs_04.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="col-2 col-md-1 pr-0">
-                          <a href="#">
-                            <img class="w-100" src="/static/imgs/SDGs_08.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="col-2 col-md-1 pr-0">
-                          <a href="#">
-                            <img class="w-100" src="/static/imgs/SDGs_11.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="col-2 col-md-1 pr-0">
-                          <a href="#">
-                            <img class="w-100" src="/static/imgs/SDGs_15.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="col-2 col-md-1 pr-0">
-                          <a href="#">
-                            <img class="w-100" src="/static/imgs/SDGs_17.jpg" alt="">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-12 mt-4">
-                      <p>
-                        設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念設計概念
-                      </p>
-                    </div>
-                    <div class="col-md-6 mt-4">
-                      <p class="bg-light p-2 text-wrap d-inline-block">
-                        <span class="fw-bold">NFT:</span>
-                        <span class="word-wrap">0xa6794dec66df7d8b69752956df1b28ca93f77cd7</span>
-                      </p>
-                    </div>
-                  </div>
-                </div> -->
-              </div>
-              <!-- <div class="col-md-4">
-                <div class="text-center">
-                  <img class="w-100" src="/static/imgs/product.jpg" alt="">
+
+            <div class="tabs mt-4">
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <a class="h5 fw-bold mr-2" href="#tasks_container">成果展現</a>
+                  <a class="h5 fw-bold mr-2" href="#sroi-section">SROI</a>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="h-100 d-flex align-items-center justify-content-center mt-4 mt-md-0 flex-column">
-                  <img class="w-75" src="/static/imgs/chart_2.jpg" alt="">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="d-flex h-100 align-items-center mt-3 mt-md-0">
-                  <div>
-                    <p class="mb-2 h5" style="font-weight: bolder;">活動設計名稱:<span class="pl-2">減塑產品設計</span></p>
-                    <p class="mb-2 h5" style="font-weight: bolder;">日期:<span class="pl-2"></span></p>
-                    <p class="mt-3">設計理念設計理念設計理念設計理念設計理念設計理念設計理念設計理念設計理念設計理念設計理念設計理念</p>
-                    <div>
-                      <img class="mr-2" src="/static/imgs/SDGs_04.jpg" alt="" style="width: 30px">
-                      <img class="mr-2" src="/static/imgs/SDGs_15.jpg" alt="" style="width: 30px">
-                      <img class="mr-2" src="/static/imgs/SDGs_17.jpg" alt="" style="width: 30px">
-                    </div>
-                    <div class="d-flex justify-content-between mt-3">
-                      <p>NFT：<span class="pl-2"></span></p>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
+              <div id="tasks_container" class="tabs-section row"></div>
+              <div id="sroi-section" class="tabs-section pt-4"></div>
             </div>
           </div>
         </div>

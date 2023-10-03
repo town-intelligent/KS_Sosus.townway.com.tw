@@ -41,7 +41,7 @@ body {
 }
 
 body {
-  padding-top: 167px; /* 94px; */
+  padding-top: 94px;
 }
 
 section {
@@ -149,22 +149,18 @@ section {
 .btn-alpha:hover{
   background-color: rgba(255,255,255,0.8);
   box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.3);
-}svg
+}
 
 .text-primary-darker{
   color:#5285DF;
 }
 
 .bg-navbar {
-    background-color: #FFFFFF !important;
+    background-color: #FFF38D !important;
 }
 
 .bg-footer {
-    background-color: #0D3956 !important;
-}
-
-#footer *, #copyright {
-  color: #FFFFFF !important;
+    background-color: #FFF38D !important;
 }
 
 .fw-bold{
@@ -173,14 +169,12 @@ section {
 
 /* 320 */
 .logo-pc {
-  width: 368;
-  height: 124px;
+  height: 60px;
 }
 
 /* 150 */
 .logo-mobile{
-  width: 184;
-  height: 62px;
+  height: 30px;
 }
 
 .text-title{

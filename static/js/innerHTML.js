@@ -134,6 +134,17 @@ const str_project_management_modal = `
                 <div class="card card-button" style="height: 100px;">
                   <div class="d-flex justify-content-center align-items-center h-100">
                     <div class="text-center">
+                      <img src="/static/imgs/menu-sroi.svg" alt="" style="width:50px">
+                      <p class="mt-2 mb-0">SROI</p>
+                    </div>
+                  </div>
+                  <a href="/backend/cms_sroi.html?uuid=UUID_PROJECT" class="stretched-link"></a>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="card card-button" style="height: 100px;">
+                  <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="text-center">
                       <img src="/static/imgs/del-project.svg" alt="" style="width:50px">
                       <p class="mt-2 mb-0">刪除專案</p>
                     </div>
@@ -391,11 +402,20 @@ const str_footer = `    <footer class="bg-footer">
     <div class="col-lg-3 mb-4 mb-lg-0">
       <div class="d-flex h-100 align-items-center justify-content-center justify-content-lg-end">
         <div>
-          <a class="text-decoration-none" href="https://www.nantou.gov.tw/big5/index.asp" target="_blank">
-            <img class="mr-1 footer_images" src="/static/imgs/townWay-icon.svg" alt="" style="width: 234px; height: 41px;">
+          <a class="text-decoration-none" href="#" target="_blank">
+            <img class="mr-1 footer_images" src="/static/imgs/townWay-icon.svg" alt="" style="height: 35px;">
           </a>
-          <a class="text-decoration-none" href="https://www.youtube.com/user/nantouable" target="_blank">
-            <img class="footer_images" src="/static/imgs/youtube-icon.svg" alt="" style="height: 41px;">
+          <a class="text-decoration-none" href="https://www.facebook.com/townway104" target="_blank">
+            <img class="mr-1 footer_images" src="/static/imgs/fb-icon.svg" alt="" style="height: 25px;">
+          </a>
+          <a class="text-decoration-none" href="https://www.linkedin.com/company/townintelligent" target="_blank">
+            <img class="mr-1 footer_images" src="/static/imgs/linkedin-icon.svg" alt="" style="height: 25px;">
+          </a>
+          <a class="text-decoration-none" href="https://www.instagram.com/townway104" target="_blank">
+            <img class="mr-1 footer_images" src="/static/imgs/instagram-icon.svg" alt="" style="height: 25px;">
+          </a>
+          <a class="text-decoration-none" href="https://www.youtube.com/user/forus999" target="_blank">
+            <img class="footer_images" src="/static/imgs/youtube-icon.svg" alt="" style="height: 25px;">
           </a>
         </div>
       </div>
