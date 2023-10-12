@@ -49,7 +49,9 @@
     <script id="tpl-sdgs" type="text/x-handlebars-template">
       {{#each sdgs_items as |sdg_item|}}
         <div class="col-12 col-lg-6">
-          <div class="f-flex w-100 h-100 row align-items-center justify-content-center pt-4">
+          <div
+            class="f-flex w-100 h-100 row align-items-center justify-content-center pt-4"
+          >
             <img
               class="col-3"
               src="/static/imgs/SDGs_{{sdg_item.index}}.jpg"
@@ -72,6 +74,13 @@
       {{/each}}
     </script>
 
+    <script id="tpl-sroi-section-loading" type="text/x-handlebars-template">
+      <h5 class="text-center font-weight-bold py-4">載入中 ... </h5>
+    </script>
+
+    <script id="tpl-sroi-section-error" type="text/x-handlebars-template">
+      <h5 class="text-center font-weight-bold py-4">載入失敗</h5>
+    </script>
 
     <script id="tpl-sroi-section" type="text/x-handlebars-template">
       <div class="row">
@@ -102,13 +111,14 @@
           </div>
         {{else}}
           <div>
-            <p class="text-center font-weight-bold">社會影響力數值已被積累，請持續關注。</p>
+            <p
+              class="text-center font-weight-bold"
+            >社會影響力數值已被積累，請持續關注。</p>
             <img class="img-thumbnail" src="static/imgs/sroi-empty.png" />
           </div>
         {{/if}}
       </div>
     </script>
-    <script>console.log(JSON.stringify(visible));</script>
   </head>
   <body class="d-flex flex-column">
     <!-- navbar -->
@@ -223,7 +233,9 @@
             <div class="tabs mt-4">
               <div class="row">
                 <div class="col-md-12 mb-3">
-                  <a class="h5 fw-bold mr-2" href="#tasks_container">成果展現</a>
+                  <a class="h5 fw-bold mr-2" href="#tasks_container"
+                    >成果展現</a
+                  >
                   <a class="h5 fw-bold mr-2" href="#sroi-section">SROI</a>
                 </div>
               </div>
