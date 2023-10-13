@@ -429,7 +429,7 @@ export async function set_page_info_content() {
     var obj_span_nft_hash = document.createElement("span");
     obj_span_nft_hash.className = "word-wrap";
     obj_span_nft_hash.innerHTML =
-      "<a href='https://testnets.opensea.io/assets/mumbai/0x63818f1dd00287d70a9e8e976618471a3659d30a/17' target=_blank>0x63818f1dd00287d70a9e8e976618471a3659d30a</a>";
+      '<input type="button" value="0x63818f1dd00287d70a9e8e976618471a3659d30a" onclick="window.open(\'https://testnets.opensea.io/assets/mumbai/0x63818f1dd00287d70a9e8e976618471a3659d30a/17\', \'_blank\');" />';
 
     obj_p_nft.append(obj_span_nft);
     obj_p_nft.append(obj_span_nft_hash);

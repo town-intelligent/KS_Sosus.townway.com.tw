@@ -58,8 +58,8 @@ export const set_page_info_cms_sroi = async (uuid) => {
   }
 
   registerHandlebarsPartial();
-
   const obj_project = plan_info(uuid);
+
   const sroiData = await getSroiData(uuid);
   data = {
     ...obj_project,
