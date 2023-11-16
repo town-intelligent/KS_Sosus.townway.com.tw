@@ -1,6 +1,7 @@
-import { getSroiData, setSroiData } from "./api/sroi.js";
+import { getSroiData, getSroiDataMeta, setSroiData } from "./api/sroi.js";
 import { draw_doughnut_chart, isValidDoughnutChartData } from "./chart/bar.js";
 import { plan_info } from "./plan.js";
+import { renderHandlebars } from "./utils/handlebars.js";
 
 let data = {};
 
@@ -60,18 +61,21 @@ export const set_page_info_cms_sroi = async (uuid) => {
   registerHandlebarsPartial();
 
   const obj_project = plan_info(uuid);
-  const sroiData = await getSroiData(uuid);
+  const sroiData = await getSroiDataMeta(uuid);
   data = {
-    ...obj_project,
+    ...obj_project,<<<<<<< main
     visible: sroiData.visible,
-    spreadsheet_url: `https://docs.google.com/spreadsheets/d/${sroiData.file_id}`,
+    spreadsheet_url: `https://docs.google.com/spreadsheets/d/${sroiData.file_id}?headers=false&chrome=false&single=true&widget=false&rm=minimal`,
   };
 
   renderSroiPage(data);
 
   $("#cms-sroi").on("click", "#refresh", async (e) => {
     e.preventDefault();
+
+    renderHandlebars("sroi-section", "tpl-sroi-section-loading", {});
     const sroiData = await getSroiData(uuid);
+
     data = {
       ...data,
       sroiData,
