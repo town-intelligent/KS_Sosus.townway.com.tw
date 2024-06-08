@@ -405,17 +405,11 @@ const str_footer = `    <footer class="bg-footer">
           <a class="text-decoration-none" href="#" target="_blank">
             <img class="mr-1 footer_images" src="/static/imgs/townWay-icon.svg" alt="" style="height: 35px;">
           </a>
-          <a class="text-decoration-none" href="https://www.facebook.com/townway104" target="_blank">
+          <a class="text-decoration-none" href="https://www.facebook.com/farming0131?locale=zh_TW" target="_blank">
             <img class="mr-1 footer_images" src="/static/imgs/fb-icon.svg" alt="" style="height: 25px;">
           </a>
-          <a class="text-decoration-none" href="https://www.linkedin.com/company/townintelligent" target="_blank">
-            <img class="mr-1 footer_images" src="/static/imgs/linkedin-icon.svg" alt="" style="height: 25px;">
-          </a>
-          <a class="text-decoration-none" href="https://www.instagram.com/townway104" target="_blank">
+          <a class="text-decoration-none" href="https://drive.google.com/file/d/1U5dyIK3pUTGmjImhEk55P9TiY6mmZ_zF/view?usp=sharing" target="_blank">
             <img class="mr-1 footer_images" src="/static/imgs/instagram-icon.svg" alt="" style="height: 25px;">
-          </a>
-          <a class="text-decoration-none" href="https://www.youtube.com/user/forus999" target="_blank">
-            <img class="footer_images" src="/static/imgs/youtube-icon.svg" alt="" style="height: 25px;">
           </a>
         </div>
       </div>

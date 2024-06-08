@@ -156,11 +156,11 @@ section {
 }
 
 .bg-navbar {
-    background-color: #FFF38D !important;
+    background-color: #D4D989 !important;
 }
 
 .bg-footer {
-    background-color: #FFF38D !important;
+    background-color: #D4D989 !important;
 }
 
 .fw-bold{
@@ -198,7 +198,7 @@ section {
 }
 
 .bg-2ndhome{
-  background-color: #FFF38D;
+  background-color: #D4D989; /*#FFF38D;*/
 }
 
 .align-sub{
