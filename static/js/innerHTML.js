@@ -408,7 +408,7 @@ const str_footer = `    <footer class="bg-footer">
           <a class="text-decoration-none" href="https://www.facebook.com/farming0131?locale=zh_TW" target="_blank">
             <img class="mr-1 footer_images" src="/static/imgs/fb-icon.svg" alt="" style="height: 25px;">
           </a>
-          <a class="text-decoration-none" href="https://drive.google.com/file/d/1U5dyIK3pUTGmjImhEk55P9TiY6mmZ_zF/view?usp=sharing" target="_blank">
+          <a class="text-decoration-none" href="https://www.instagram.com/minung_village_2020/" target="_blank">
             <img class="mr-1 footer_images" src="/static/imgs/instagram-icon.svg" alt="" style="height: 25px;">
           </a>
         </div>
