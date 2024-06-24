@@ -15,3 +15,7 @@ COPYRIGHT = "南方永續支持平台"
 
 // Weight : SDGs, 人文地產景, 德智體群美
 WEIGHT = [1, 1, 1]
+
+// FEATURES
+LLM = false
+SROI = false
